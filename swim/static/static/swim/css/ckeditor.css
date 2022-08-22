@@ -1,0 +1,56 @@
+h1 {
+  font-size: 30px;
+  font-weight: bold; }
+
+h2 {
+  font-size: 25px;
+  font-weight: bold; }
+
+h3 {
+  font-size: 20px;
+  font-weight: bold; }
+
+h4 {
+  font-size: 15px;
+  font-weight: bold; }
+
+ul, ol {
+  overflow: hidden;
+  padding-left: 2rem; }
+
+.image-left,
+.image-right,
+.image-center {
+  float: left;
+  height: auto;
+  width: 50%;
+  margin: 0 20px 10px 0 !important; }
+  .image-left > figure,
+  .image-right > figure,
+  .image-center > figure {
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%; }
+    .image-left > figure img,
+    .image-right > figure img,
+    .image-center > figure img {
+      width: 100% !important;
+      height: auto !important;
+      float: none !important; }
+  .image-left > img,
+  .image-right > img,
+  .image-center > img {
+    float: none !important;
+    height: auto !important;
+    width: 100% !important; }
+
+.image-right {
+  float: right;
+  margin: 0 0 10px 20px !important; }
+
+.image-center {
+  float: none;
+  width: 100%;
+  margin: 0 0 10px !important; }
+
+/*# sourceMappingURL=ckeditor.css.map */

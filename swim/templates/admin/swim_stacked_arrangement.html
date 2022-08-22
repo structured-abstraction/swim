@@ -1,0 +1,47 @@
+{% comment %}
+<!--
+    This is not used at the moment. It was a failed attempt at itegrating 
+    arrangements into the admin.
+-->
+{% endcomment %}
+{% load i18n %}
+<div class="inline-group">
+  <h2>{{ inline_admin_formset.opts.verbose_name_plural|title }}</h2>
+{{ inline_admin_formset.formset.management_form }}
+{{ inline_admin_formset.formset.non_form_errors }}
+
+{# --before-loop-- {{ inline_admin_formset.opts.model }} #}
+{# --before-loop-interface {{ inline_admin_formset.formset.interface }} #}
+{# --before-loop-arrangement_type {{ inline_admin_formset.formset.arrangement_type }} #}
+{% with inline_admin_formset.formset.interface as interface %}
+  {% with inline_admin_formset.formset.arrangement_type as arrangement_type %}
+    {% for inline_admin_form in inline_admin_formset %}
+    <div class="inline-related{% if forloop.last %} last-related{% endif %}">
+      {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+      {% with inline_admin_form.form.instance.arrangement as arrangement %}
+        {% for fieldset in inline_admin_form %}
+          {% include "admin/includes/swim_arrangement_fieldset.html" %}
+          <a onclick="return showAddAnotherPopup(this);"
+            class="change"
+            href="{% spaceless%}
+            {% if arrangement %}
+              {% url admin:content_arrangement_change arrangement.id %}
+            {% else %}
+              {% url admin:content_arrangement_add %}
+            {% endif %}{% endspaceless %}?type={{ arrangement_type.id }}">
+              Edit
+              <img height="10" width="10" alt="Edit" src="/adminmedia/img/admin/icon_changelink.gif"/>
+          </a>
+        {% endfor %}
+      {% endwith %}
+      {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+      {{ inline_admin_form.fk_field.field }}
+    </div>
+    {% endfor %}
+  {% endwith %}
+{% endwith %}
+{# TODO: ADD in JS add another. #}
+{# <ul class="tools"> #}
+{#   <li><a class="add" href="">Add another {{ inline_admin_formset.opts.verbose_name|title }}</a></li> #}
+{# </ul> #}
+</div>

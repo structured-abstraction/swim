@@ -1,0 +1,34 @@
+{% extends "swim/media/base.html" %}
+{% load staticfiles %}
+
+{% block image-browser-class %}pure-button-active{% endblock %}
+
+{% block body %}
+<section id="file_selector">
+
+    {% if folder %}
+        <div class="folder item back">
+            <a href="{% url 'swim.media.views.image_browser' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">
+                <img src="{% static "swim/images/folder.png" %}" width="150">
+                <span class="name">&lt; Back</span>
+            </a>
+        </div>
+    {% endif %}
+    {% for folder in folders %}
+        <div class="folder item">
+            <a href="{% url 'swim.media.views.image_browser' folder_id=folder.id %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">
+                <img src="{% static "swim/images/folder.png" %}" width="150">
+                <span class="name">{{ folder.name }}</span>
+            </a>
+        </div>
+    {% endfor %}
+    {% for image in images %}
+        <div class="image item">
+            <a href="{% url 'swim.media.views.image_view' image.id %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">
+                {{ image.browser_thumbnail|safe }}
+                <span class="name">{{ image.filename }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

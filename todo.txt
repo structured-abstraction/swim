@@ -1,0 +1,14 @@
+(A) django_admin/__init__.py line 224 overrides django. Test it. +2.2
+x 2019-07-29 django_admin/__init__.py line 278 overrides django. Consider removing it? +2.2
+x 2019-07-29 grep for allow_tags in swim +2.2
+x 2019-07-29 restore and port ./swim/blog/migrations +2.2
+x 2019-07-29 restore and port ./swim/content/migrations +2.2
+x 2019-07-29 restore and port ./swim/core/migrations +2.2
+x 2019-07-29 restore and port ./swim/design/migrations +2.2
+x 2019-07-29 restore and port ./swim/event/migrations +2.2
+x 2019-07-29 restore and port ./swim/form/migrations +2.2
+x 2019-07-29 restore and port ./swim/media/migrations +2.2
+x 2019-07-29 restore and port ./swim/membership/migrations +2.2
+x 2019-07-29 restore and port ./swim/redirect/migrations +2.2
+x 2019-07-29 restore and port ./swim/security/migrations +2.2
+x 2019-07-29 restore and port ./swim/syndication/migrations +2.2

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Set this to the main language of your site -->
+    <head>
+        <link  href="/static/swim/js/cropper/cropper.css" rel="stylesheet">
+        <script src="/static/swim/js/cropper/cropper.js"></script>
+
+        <style>
+            body {
+                width: 700px;
+                margin: 0 auto;
+                font-family: sans-serif;
+            }
+            img {
+                max-width: 100%;
+            }
+            input[type="submit"] {
+                background: royalblue;
+                border: 0;
+                color: white;
+                margin: 20px 0;
+                padding: 16px 30px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Crop Image</h1>
+
+        {% if success %}
+            <div id="success"></div>
+        {% endif %}
+
+        {% for key, attributes in variants.items %}
+            <div>
+                <h3>{{ key }}</h3>
+                <p>{{ attributes.documentation|default:"" }}</p>
+                <img id="variant-image-{{ key }}" src="{{ obj.image.url }}">
+            </div>
+            <br>
+        {% endfor %}
+
+        <form id="variant-crop-form" method="POST">{% csrf_token %}
+            {% for key, attributes in variants.items %}
+                <input type="hidden" name="__{{ key }}">
+            {% endfor %}
+            <input type="submit" value="Save" name="save">
+        </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script>
+<script type="text/javascript">
+{% load swim_utils %}
+
+var variants = [
+{% for key, attributes in variants.items %}
+    {
+        key: '{{ key }}',
+        width: {{ attributes.arguments.width }},
+        height: {{ attributes.arguments.height }}
+        {% with obj.user_variant_crop|get_item:key as crop %}
+        {% if crop %}
+            ,
+            left: {{ crop.left }},
+            right: {{ crop.right }},
+            top: {{ crop.top }},
+            bottom: {{ crop.bottom }}
+        {% endif %}
+        {% endwith %}
+    }
+    {% if not forloop.last %},{% endif %}
+{% endfor %}
+];
+
+require([
+    "dojo/_base/array",
+    "dojo/dom",
+    "dojo/on",
+    "dojo/query",
+
+    "dojo/domReady!"
+], function(array, dom, on, query) {
+
+    /* Close the popup window if the submit comes back succesful. */
+    if (dom.byId('success')) {
+        var win = window.self;
+        win.opener = window.self;
+        win.close();
+    }
+
+    array.forEach(variants, function(variant) {
+        data = {};
+        if (variant.left !== null) {
+            data.x = variant.left;
+
+            if (variant.right != null) {
+                data.width = variant.right - variant.left;
+            }
+        }
+        if (variant.top != null) {
+            data.y = variant.top;
+
+            if (variant.bottom != null) {
+                data.height = variant.bottom - variant.top;
+            }
+        }
+
+        var image = dom.byId('variant-image-' + variant.key);
+        var cropper = new Cropper(image, {
+            aspectRatio: variant.width / variant.height,
+            autoCropArea: 1,
+            viewMode: 2,
+            data: data,
+            crop(evt) {
+                var input = query('input[name="__' + variant.key + '"]')[0];
+                if (input) {
+                    input.value = evt.detail.x;
+
+                    input.value = JSON.stringify({
+                        left: Math.floor(evt.detail.x),
+                        right: Math.floor(evt.detail.width + evt.detail.x),
+                        top: Math.floor(evt.detail.y),
+                        bottom: Math.floor(evt.detail.height + evt.detail.y)
+                    });
+                }
+            }
+        });
+    });
+});
+
+</script>
+
+    </body>
+</html>

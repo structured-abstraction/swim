@@ -1,0 +1,14 @@
+{% if resource.meta_no_follow and resource.meta_no_index %}
+    <meta name="robots" content="noindex, nofollow">
+{% elif resource.meta_no_follow %}
+    <meta name="robots" content="nofollow">
+{% elif resource.meta_no_index %}
+    <meta name="robots" content="noindex">
+{% endif %}
+
+{% if resource.meta_keywords %}
+    <meta name="keywords" content="{{ resource.meta_keywords }}" >
+{% endif %}
+{% if resource.meta_description %}
+    <meta name="description" content="{{ resource.meta_description }}" >
+{% endif %}

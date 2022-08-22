@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Set this to the main language of your site -->
+    <head>
+    {% block head %}
+        <meta charset="utf-8">
+        <title>SWIM Image Browser</title>
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="/static/swim/css/swim.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+                box-sizing: border-box;         /* Opera/IE 8+ */
+            }
+            section {
+                margin: 10px;
+            }
+            .item {
+                padding: 5px;
+                width: 160px;
+                height: 180px;
+                margin: 5px;
+                float: left;
+                overflow: hidden;
+            }
+            .item img {
+                margin: auto;
+                max-width: 128px;
+                max-height: 128px;
+                display: block;
+            }
+            .item span {
+                margin: 0 auto;
+                width: 150px;
+                text-overflow: ellipsis;
+                padding: 2px;
+                display: inline-block;
+                text-align: center;
+                font-size: 11px;
+                font-weight: bold;
+            }
+            #variant_selector .image {
+                border: thin solid grey;
+                margin: 10px 0px;
+                padding: 10px;
+                background-color: #f0f0f0;
+            }
+            #variant_selector .image button,
+            #variant_selector .image span,
+            #variant_selector .image img {
+                display: block;
+                margin: 5px 0px;
+            }
+            #variant_selector .image span {
+                font-size: 14pt;
+                font-weight: bold;
+            }
+        </style>
+    {% endblock head %}
+    </head>
+<body id="browser">
+{% block navigation %}
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+        <span class="pure-menu-heading">{% block title %}Find a {% ifequal type "image" %}Image{% else %}File{% endifequal %}{% endblock %}</span>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a class="pure-menu-link {% block image-browser-class %}{% endblock %}" href="{% url 'swim.media.views.image_browser' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">Image Browser</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link {% block image-upload-class %}{% endblock %}" href="{% url 'swim.media.views.image_upload' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">Image Uploader</a></li>
+        {% ifequal type "image" %}
+        {% else %}
+            <li class="pure-menu-item"><a class="pure-menu-link {% block file-browser-class %}{% endblock %}" href="{% url 'swim.media.views.file_browser' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">File Browser</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link {% block file-upload-class %}{% endblock %}" href="{% url 'swim.media.views.file_upload' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">File Uploader</a></li>
+        {% endifequal %}
+        </ul>
+    </div>
+{% endblock navigation %}
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

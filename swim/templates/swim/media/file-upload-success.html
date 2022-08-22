@@ -1,0 +1,9 @@
+{% extends "swim/media/base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<script>
+    window.opener.CKEDITOR.tools.callFunction( {{ CKEditorFuncNum }}, '{{ file.url }}');
+    window.close();
+</script>
+{% endblock %}
