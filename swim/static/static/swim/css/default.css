@@ -1,0 +1,152 @@
+
+/*
+
+--------------------------------------------------------------------
+
+COPYRIGHT + CREDITS
+
+--------------------------------------------------------------------
+
+*/
+
+
+#credits {
+    color: #858585;
+    font-size: 10px;
+    text-align: left;
+    min-height: 60px;
+
+}
+
+
+#credits .bug {
+    float: right;
+    display: block;
+}
+
+#credits a {
+    color: #858585;
+}
+
+#credits a:hover {
+    text-decoration: underline;
+}
+
+/*
+
+--------------------------------------------------------------------
+
+ADMIN + EDITING
+
+--------------------------------------------------------------------
+
+*/
+ 
+fieldset {
+    padding: 5px 10px 10px 5px;
+    border: 1px solid black;
+}
+ 
+fieldset legend a {
+    border-left: 0px !important;
+}
+fieldset legend {
+    border: 1px solid black;
+    color: #858585;
+    background-color: #ccc;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+#swimAdminBar {
+    background-color: #268;
+    color: #FFF;
+    font-size: 14pt;
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+}
+
+#swimAdminBar h2 {
+    color: #FFF;
+    background: url('/static/swim/images/logo-48.png') no-repeat;
+    vertical-align: middle;
+    position: relative;
+    top: 0;
+    font-size: 30px;
+    margin: 0pt 400px 0 0;
+    padding: 0px 0 10px 50px;
+}
+
+#swimAdminBar a {
+    padding: 10px;
+    color: #FFF;
+    margin-bottom: 10px;
+    vertical-align: middle;
+}
+
+#swimAdminBar #swimEditLinks a {
+    float: right;
+}
+
+/*
+
+--------------------------------------------------------------------
+
+GALLERY 
+
+--------------------------------------------------------------------
+
+*/
+
+.galleryImage {
+    margin-left: 10px;
+    float: left;
+
+}
+
+/* 
+
+--------------------------------------------------------------------
+
+GALLERY LANDING PAGE
+
+--------------------------------------------------------------------
+
+*/
+
+.galleryList {
+}
+
+.galleryHero {
+	z-index: 1;
+	float: left;
+	position: relative;
+	margin: 0px 30px 30px 0px;
+}
+
+.galleryList .galleryTitle {
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	background: #fff;
+	padding: 2px;
+	opacity:0.75;
+	filter:alpha(opacity=75);	
+}
+
+.galleryHero img {
+	width: 400px;
+}
+
+
+.galleryHero a img, .galleryHero a:link img, .galleryHero a:visited img  {
+	border: 1px solid #fff;
+}
+
+.galleryHero a:hover img {
+	border: 1px solid #666;
+}
+
+

@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !=/{{ download_script_url }}
+RewriteRule .* /{{ download_script_url }}

@@ -1,0 +1,29 @@
+{% extends "swim/media/base.html" %}
+{% load static %}
+
+{% block image-upload-class %}pure-button-active{% endblock %}
+
+{% block body %}
+<section id="file_upload">
+    <br>
+    <form class="pure-form pure-form-aligned" action="{% url 'swim.media.views.image_upload' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+        {% with form.folder as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+
+        {% with form.image as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+
+        {% with form.title as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+
+        {% with form.alt as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+
+        {% with form.caption as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+
+        {% with form.link_url as field %}{% include "swim/media/form-field.html" %}{% endwith %}
+        <div class="pure-control-group">
+            <label>&nbsp;</label>
+            <button class="pure-button pure-button-primary"type="Submit">Upload</button>
+        </div>
+    </form>
+
+</section>
+{% endblock %}

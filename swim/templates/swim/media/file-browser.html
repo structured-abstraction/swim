@@ -1,0 +1,32 @@
+{% extends "swim/media/base.html" %}
+{% load static %}
+
+{% block file-browser-class %}pure-button-active{% endblock %}
+
+{% block body %}
+<section id="file_selector">
+
+    {% if folder %}
+        <div class="folder item back">
+            <a href="{% url 'swim.media.views.file_browser' %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">
+                <img src="{% static "swim/images/folder.png" %}" width="150">
+                <span class="name">&lt; Back</span>
+            </a>
+        </div>
+    {% endif %}
+    {% for folder in folders %}
+        <div class="folder item">
+            <a href="{% url 'swim.media.views.file_browser' folder_id=folder.id %}?type={{ type }}&CKEditorFuncNum={{ CKEditorFuncNum }}">
+                <img src="{% static "swim/images/folder.png" %}" width="150">
+                <span class="name">{{ folder.name }}</span>
+            </a>
+        </div>
+    {% endfor %}
+    {% for file in files %}
+        <a class="file item" onclick="window.opener.CKEDITOR.tools.callFunction( {{ CKEditorFuncNum }}, '{{ file.url }}'); window.close();" href="#">
+            <img src="{% static "swim/images/flaticon/png/" %}{{ file.ext }}.png">
+            <span class="name">{{ file.filename }}</span>
+        </a>
+    {% endfor %}
+</section>
+{% endblock %}

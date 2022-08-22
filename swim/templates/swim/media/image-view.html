@@ -1,0 +1,18 @@
+{% extends "swim/media/base.html" %}
+{% load static %}
+
+{% block body %}
+<section id="variant_selector">
+    <h1>{{ image.filename }}</h1>
+
+    <a href="{% if image.folder %}{% url 'swim.media.views.image_browser' folder_id=image.folder.id %}{% else %}{% url 'swim.media.views.image_browser' %}{% endif %}?type={{ type }}&CKEditorFuncNum= {{ CKEditorFuncNum }}">Back</a>
+
+    {% for variant_name, url, args in variants %}
+        <div class="image">
+            <span class="name">{{ variant_name }}</span>
+            <button onclick="window.opener.CKEDITOR.tools.callFunction( {{ CKEditorFuncNum }}, '{{ url|escapejs }}'); window.close();">Select this image</button>
+            <img src="{{ url }}">
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

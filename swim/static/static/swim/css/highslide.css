@@ -1,0 +1,172 @@
+.highslide-wrapper div {
+    font-family: Verdana, Helvetica;
+    font-size: 10pt;
+}
+.highslide {
+    cursor: url(/static/swim/js/graphics/zoomin.cur), pointer;
+    outline: none;
+    text-decoration: none;
+}
+.highslide-active-anchor img {
+    visibility: hidden;
+}
+.highslide-wrapper, .drop-shadow {
+    background: white;
+}
+.highslide img {
+    border: 2px solid gray;
+}
+.highslide:hover img {
+    border: 2px solid white;
+}
+.highslide-wrapper {
+    background: white;
+}
+.highslide-image {
+    border: 10px solid white;
+}
+.highslide-image-blur {
+}
+.highslide-caption {
+    display: none;
+    border: 5px solid white;
+    border-top: none;
+    padding: 5px;
+    background-color: white;
+}
+.highslide-display-block {
+    display: block;
+}
+.highslide-loading {
+    display: block;
+    color: black;
+    font-size: 8pt;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2px;
+    border: 1px solid black;
+    background-color: white;
+
+    padding-left: 22px;
+    background-image: url(/static/swim/js/graphics/loader.white.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+}
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+    font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+
+a.highslide-full-expand {
+    background: url(/static/swim/js/graphics/fullexpand.gif) no-repeat;
+    display: block;
+    margin: 0 10px 10px 0;
+    width: 34px;
+    height: 34px;
+}
+/* Controls. See http://www.google.com/search?q=css+sprites */
+.highslide-controls {
+    width: 195px;
+    height: 40px;
+    background: url(/static/swim/js/graphics/controlbar-white.gif) 0 -90px no-repeat;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.highslide-controls ul {
+    position: relative;
+    left: 15px;
+    height: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: url(/static/swim/js/graphics/controlbar-white.gif) right -90px no-repeat;
+}
+.highslide-controls li {
+    float: left;
+    padding: 5px 0;
+}
+.highslide-controls a {
+    background-image: url(/static/swim/js/graphics/controlbar-white.gif);
+    display: block;
+    float: left;
+    height: 30px;
+    width: 30px;
+    outline: none;
+}
+.highslide-controls a.disabled {
+    cursor: default;
+}
+.highslide-controls a span {
+    /* hide the text for these graphic buttons */
+    display: none;
+}
+.highslide-move a {
+    cursor: move;
+}
+
+/* The CSS sprites for the controlbar */
+.highslide-controls .highslide-previous a {
+    background-position: 0 0;
+}
+.highslide-controls .highslide-previous a:hover {
+    background-position: 0 -30px;
+}
+.highslide-controls .highslide-previous a.disabled {
+    background-position: 0 -60px !important;
+}
+.highslide-controls .highslide-play a {
+    background-position: -30px 0;
+}
+.highslide-controls .highslide-play a:hover {
+    background-position: -30px -30px;
+}
+.highslide-controls .highslide-play a.disabled {
+    background-position: -30px -60px !important;
+}
+.highslide-controls .highslide-pause a {
+    background-position: -60px 0;
+}
+.highslide-controls .highslide-pause a:hover {
+    background-position: -60px -30px;
+}
+.highslide-controls .highslide-next a {
+    background-position: -90px 0;
+}
+.highslide-controls .highslide-next a:hover {
+    background-position: -90px -30px;
+}
+.highslide-controls .highslide-next a.disabled {
+    background-position: -90px -60px !important;
+}
+.highslide-controls .highslide-move a {
+    background-position: -120px 0;
+}
+.highslide-controls .highslide-move a:hover {
+    background-position: -120px -30px;
+}
+.highslide-controls .highslide-full-expand a {
+    background-position: -150px 0;
+}
+.highslide-controls .highslide-full-expand a:hover {
+    background-position: -150px -30px;
+}
+.highslide-controls .highslide-full-expand a.disabled {
+    background-position: -150px -60px !important;
+}
+.highslide-controls .highslide-close a {
+    background-position: -180px 0;
+}
+.highslide-controls .highslide-close a:hover {
+    background-position: -180px -30px;
+} 
+

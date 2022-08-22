@@ -1,0 +1,20 @@
+{% extends "swim/media/base.html" %}
+{% load static %}
+
+{% block body %}
+<section id="file_selector">
+    <h1>{{ title }}</h1>
+    <div class="folder item">
+        <a href="{% url 'swim.media.views.file_browser' %}?type=link&CKEditorFuncNum={{ CKEditorFuncNum }}">
+            <img src="{% static "swim/images/folder.png" %}" width="150">
+            <span class="name">Files</span>
+        </a>
+    </div>
+    <div class="folder item">
+        <a href="{% url 'swim.media.views.image_browser' %}?type=link&CKEditorFuncNum={{ CKEditorFuncNum }}">
+            <img src="{% static "swim/images/folder.png" %}" width="150">
+            <span class="name">Images</span>
+        </a>
+    </div>
+</section>
+{% endblock %}
