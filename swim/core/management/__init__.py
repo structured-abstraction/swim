@@ -135,7 +135,6 @@ DEFAULT_SWIM_GROUPS = (
 
 DEFAULT_SWIM_USERS = (
     # ( username, db_password_entry, first_name, last_name, email_address, staff, active, superuser)
-,
 )
 
 #------------------------------------------------------------------------------
